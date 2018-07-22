@@ -3,11 +3,7 @@ import axios from 'axios';
 import youtubeSearch from 'youtube-api-search';
 import VideoList from './VideoList'
 import VideoPlayer from './VideoPlayer'
-//const API_KEY = 'AIzaSyDfkv8VkhB735Wswnz7q0wIj11zjZG58gM';
 
-// youtubeSearch({key:API_KEY,term:'sachin'},function(data){
-//   console.log(data)
-//  });
 
 class YoutubeApi extends Component{
 
@@ -16,7 +12,7 @@ class YoutubeApi extends Component{
     this.state = {
       videos:[],
       videoSelected:null,
-      
+
     }
 this.videoSearchWithTerm = this.videoSearchWithTerm.bind(this)
   }
