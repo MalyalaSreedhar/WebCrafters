@@ -15,26 +15,30 @@ class YoutubeApi extends Component{
     super(props)
     this.state = {
       videos:[],
-      videoSelected:null
+      videoSelected:null,
+      
     }
-
+this.videoSearchWithTerm = this.videoSearchWithTerm.bind(this)
   }
 
   componentDidMount(){
+      this.videoSearchWithTerm('sachin')
+    }
+
+    videoSearchWithTerm(term){
       const api_key = 'AIzaSyDfkv8VkhB735Wswnz7q0wIj11zjZG58gM';
 
-      youtubeSearch({key:api_key,term:'rajnikanth'},(videos)=>{
+      youtubeSearch({key:api_key,term:term},(videos)=>{
 
          this.setState(
            {
              videos:videos,
-             videoSelected:videos[0]
+             videoSelected:videos[0],
+
            }
          )
        });
-
     }
-
 
 
   render(){
@@ -42,6 +46,8 @@ class YoutubeApi extends Component{
     return (
       <div>
           <h1>WebCrafts Assignment</h1>
+          <label>Search Here:</label>
+          <input type="text"  onChange={(event)=>this.videoSearchWithTerm({search:event.target.value})}/>
           <VideoPlayer videoplayer={this.state.videoSelected}/>
           <VideoList videos={this.state.videos} clicked={(videoSelected)=>this.setState({videoSelected})}/>
       </div>
